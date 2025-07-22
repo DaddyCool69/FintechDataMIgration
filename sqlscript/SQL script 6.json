@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 6",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE PROC [airbnb].[BookingAggregation] AS\nBEGIN\n    TRUNCATE TABLE airbnb.BookingCustomerAggregation;\n\n    INSERT INTO airbnb.BookingCustomerAggregation\n    SELECT \n        c.country,\n        COUNT_BIG(*) AS total_bookings,\n        SUM(ISNULL(b.amount, 0)) AS total_amount,\n        MAX(b.booking_date) AS last_booking_date\n    FROM \n        airbnb.bookings_fact b\n    JOIN \n        airbnb.customer_dim c ON b.customer_id = c.customer_id\n    GROUP BY \n        c.country;\nEND;\n\n-- EXEC [airbnb].[BookingAggregation];\n\n-- select * from airbnb.BookingCustomerAggregation;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "airbnb",
+				"poolName": "airbnb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

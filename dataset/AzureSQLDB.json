@@ -1,0 +1,13 @@
+{
+	"name": "AzureSQLDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "fintechASQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

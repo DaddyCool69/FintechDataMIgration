@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "-- SELECT TOP (100) [customer_id]\n-- ,[first_name]\n-- ,[last_name]\n-- ,[email]\n-- ,[phone_number]\n-- ,[address]\n-- ,[city]\n-- ,[state]\n-- ,[country]\n-- ,[zip_code]\n-- ,[signup_date]\n-- ,[last_login]\n-- ,[total_bookings]\n-- ,[total_spent]\n-- ,[preferred_language]\n-- ,[referral_code]\n-- ,[account_status]\n--  FROM [airbnb].[customer_dim]\n\n\n TRUNCATE table [airbnb].[customer_dim]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "airbnb",
+				"poolName": "airbnb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "-- CREATE USER [adfaryang] FROM EXTERNAL PROVIDER;\n-- -- ALTER ROLE db_owner ADD MEMBER [adfaryang];\n\n-- -- - Create the user for ADF Managed Identity\n-- -- CREATE USER [<your-adf-name>] FROM EXTERNAL PROVIDER;\n\n-- -- Grant necessary permissions (pick one)\n-- ALTER ROLE db_datareader ADD MEMBER [adfaryang];\n-- ALTER ROLE db_datawriter ADD MEMBER [adfaryang];\n-- -- OR for full access\n-- -- ALTER ROLE db_owner ADD MEMBER [<your-adf-name>];\nSELECT name, type_desc FROM sys.database_principals\nWHERE name = 'adfaryang';\n\n\n\n-- Step 2: Grant roles using Synapse-compatible command\nEXEC sp_addrolemember 'db_datareader', 'adfaryang';\nEXEC sp_addrolemember 'db_datawriter', 'adfaryang';\n-- Or:\n-- EXEC sp_addrolemember 'db_owner', 'adfaryang';\n\n-- ALTER ROLE db_owner ADD MEMBER [adfaryang];\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "airbnb",
+				"poolName": "airbnb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

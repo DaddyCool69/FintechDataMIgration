@@ -1,0 +1,17 @@
+{
+	"name": "AirBnBBookingFactAggregationSP",
+	"properties": {
+		"content": {
+			"query": "\n-- Grant SELECT on the entire schema (recommended)\n--GRANT SELECT ON SCHEMA::[airbnb] TO [adfaryang];\n\n-- Or grant SELECT on specific table (if needed)\n-- GRANT SELECT ON OBJECT::[airbnb].[Bookings_fact] TO [adfaryang];\n-- Check you're in correct DB\nSELECT DB_NAME() AS CurrentDB;\n\n\n\n-- Give it permissions on the schema/table\nGRANT SELECT ON airbnb.bookings_fact TO [adfaryang];\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "airbnb",
+				"poolName": "airbnb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"name": "ToBronze",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "fintechADLS",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"schemaName": {
+					"value": "@dataset().schemaName",
+					"type": "Expression"
+				},
+				"tableName": {
+					"value": "@dataset().tabkeName",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"schemaName": {
+				"type": "string"
+			},
+			"tabkeName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@{concat(dataset().tabkeName,'.parquet')}",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@{concat('bronze/',dataset().schemaName,'/', dataset().tabkeName)}",
+					"type": "Expression"
+				},
+				"fileSystem": "fintech"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

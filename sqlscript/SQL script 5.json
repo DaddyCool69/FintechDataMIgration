@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 5",
+	"properties": {
+		"content": {
+			"query": "\n -- TODO: Set parameter values here \n\n CREATE TABLE airbnb.BookingCustomerAggregation\nWITH (DISTRIBUTION = ROUND_ROBIN)\nAS\nSELECT \n    c.country,\n    COUNT_BIG(*) AS total_bookings,\n    SUM(ISNULL(b.amount, 0)) AS total_amount,\n    MAX(b.booking_date) AS last_booking_date\nFROM \n    airbnb.bookings_fact b\nJOIN \n    airbnb.customer_dim c ON b.customer_id = c.customer_id\nGROUP BY \n    c.country;\n\n EXECUTE [airbnb].[BookingAggregation]\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "airbnb",
+				"poolName": "airbnb"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
