@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synapsearyang"
+		},
+		"fintechADLS_accountKey": {
+			"value": ""
+		},
+		"fintechASQLDB_password": {
+			"value": ""
+		},
+		"synapsearyang-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapsearyang.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"fintechADLS_properties_typeProperties_url": {
+			"value": "https://airbnbaryan.dfs.core.windows.net/"
+		},
+		"fintechASQLDB_properties_typeProperties_server": {
+			"value": "sqldbaryan.database.windows.net"
+		},
+		"fintechASQLDB_properties_typeProperties_database": {
+			"value": "sqldb"
+		},
+		"fintechASQLDB_properties_typeProperties_userName": {
+			"value": "aryan"
+		},
+		"synapsearyang-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://airbnbaryan.dfs.core.windows.net"
+		}
+	}
+}
